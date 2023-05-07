@@ -1,0 +1,129 @@
+```{r}
+d3 = read.csv("mrc_table3.csv")
+head(d3)
+data = na.omit(d3)
+#d3[is.na(d3)] <- 0
+
+#data = d3
+head(data)
+
+summary(data)
+
+library(ade4)
+library(ggbiplot)
+library(viridis)
+```
+
+
+
+```{r}
+data2 = data[,9:20]
+data2
+out_pca3 = prcomp(data2, scale. = TRUE)
+out_pca4 = prcomp(data2, scale. = FALSE)
+
+ggbiplot(out_pca3, scale = 1, groups = data$tier_name)
+ggbiplot(out_pca4, scale = 1, groups = data$tier_name) 
+
+
+
+```
+
+Mobility_rt   -0.06385518 -0.20058083
+parent_inc_q1 -0.35729421 -0.13477024
+parent_inc_q2 -0.36721597  0.02227552
+parent_inc_q3 -0.22194934  0.41392480
+parent_inc_q4  0.17612384  0.45595016
+parent_inc_q5  0.35235550 -0.25365246
+child_inc_0   -0.28715457 -0.25775128
+child_inc_q1  -0.29781047 -0.24606985
+child_inc_q2  -0.33881059 -0.04463135
+child_inc_q3  -0.32073096  0.25196090
+child_inc_q4   0.08046111  0.51313615
+child_inc_q5   0.36564531 -0.20438493
+
+```{r}
+library(ggrepel)
+library(dplyr)
+loadings = out_pca4$rotation[,1:2]
+x <- c(1,2,3,11,12)
+top_loadings <- data.frame(loadings[x,])
+new_df = data.frame(out_pca4$x[,1:2], data)
+
+data = data %>% mutate(region_name = case_when(region == 1 ~ 'Northeast',
+                                        region == 2 ~ 'Midwest',
+                                        region == 3 ~ 'South',
+                                        region == 4 ~ 'West'))
+
+new_df = data.frame(out_pca4$x[,1:2], data)
+ggplot(new_df) + 
+  geom_point(aes(x = PC1, y = PC2, color = tier_name)) +
+  geom_segment(aes(xend = PC1, yend = PC2, x = 0, y = 0),
+                 data = top_loadings, arrow = arrow(length = unit(0.03, "npc"))) +
+   geom_text_repel(aes(x = PC1, y = PC2, label = row.names(top_loadings)), data = top_loadings, max.overlaps = 200)
+
+
+
+ggplot(new_df) + 
+  geom_point(aes(x = PC1, y = PC2, color = region_name)) +
+  geom_segment(aes(xend = PC1, yend = PC2, x = 0, y = 0),
+                 data = top_loadings, arrow = arrow(length = unit(0.03, "npc"))) +
+   geom_text_repel(aes(x = PC1, y = PC2, label = row.names(top_loadings)), data = top_loadings, max.overlaps = 200)
+```
+```{r}
+
+ggplot(data) + geom_boxplot(aes(x = tier_name, y = parent_inc_q1, color = region_name)) + theme(axis.text.x = element_text(angle = 90))
+
+```
+
+```{r}
+ggplot(data) + geom_boxplot(aes(x = tier_name, y = Mobility_rt, color = region_name)) + theme(axis.text.x = element_text(angle = 90))
+
+
+```
+#ggplot(data) + geom_point(aes(x = region_name, y = parent_inc_q1, color = College_tier))
+
+```{r}
+ggplot(data) + 
+  geom_boxplot(aes(x = tier_name, y = parent_inc_q1)) +
+  geom_boxplot(aes(x = tier_name, y = Mobility_rt)) +
+  theme(axis.text.x = element_text(angle = 90)) +labs(y = "Mobility rate & Parent Income Q1")
+
+```
+
+
+```{r}
+ggplot(data, aes(cohort, Mobility_rt, color = region_name)) + facet_wrap(~tier_name) +  theme(plot.margin = unit(c(0.1,0.1,0.1,0.1), "cm"),axis.text.x = element_text(angle = 90),
+        axis.title.x = element_blank()) + geom_smooth(method = "loess") + labs(y = "Mobility Rate", x = "Cohort", color ="Region") + scale_color_manual(labels = c("N-east", "M-west", "South", "West"),values = c("yellow", "Green", "blue", "red"))
+
+```
+
+```{r}
+library(vcd)
+cotabplot(~region_name+College_tier, data=data, gp=shading_max)
+
+```
+
+```{r}
+ggplot(data,aes(x=cohort,color=region_name))+stat_ecdf()+
+  xlab('Cohort') + ylab('ECDF')+ggtitle('Density by region')+
+  theme(legend.position = c(0.8,0.2))
+
+```
+
+```{r}
+ggplot(data,aes(x=cohort,color=tier_name))+stat_ecdf()+
+  xlab('Cohort') + ylab('ECDF')+ggtitle('Density by Tier')+
+  theme(legend.position=c(0.85,0.3))
+```
+
+
+```{r}
+ggplot(data, aes(parent_inc_q1, Mobility_rt, color = region_name)) + geom_point(position = position_jitter(width = 0.3)) + facet_wrap(~College_tier) +  theme(plot.margin = unit(c(0.1,-0.1,0.1,0.1), "cm"),axis.text.x = element_text(angle = 90),axis.title.x = element_blank()) + geom_smooth(method = "loess")
+
+```
+
+
+
+
+
