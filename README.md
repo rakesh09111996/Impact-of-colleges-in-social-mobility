@@ -13,9 +13,9 @@ The data was sourced from Opportunity Insights contributed by the paper, “Inco
 1.	Region: 4 different regions in the US
    
    ![alt_text](https://github.com/rakesh09111996/College-and-mobility/blob/8adf8837e3971332a4a0ade4e418354ada04332e/regions.jpg)
-  	West, mid West, North East and South
+  	West, Mid West, North East and South
    
-2.	Tier of the Colleges
+2.	Tier of the Colleges:
     1 = Ivy Plus 
     2 = Other elite schools (public and private) 
     3 = Highly selective public
