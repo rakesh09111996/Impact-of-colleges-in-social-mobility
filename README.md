@@ -11,6 +11,7 @@ To answer this broad question and to understand whether the region or a specific
 The data was sourced from Opportunity Insights contributed by the paper, “Income Segregation and Intergenerational Mobility Across Colleges in the United States.” The data consists of parent’s and children’s income distributions by college, separately by birth cohort. The important variables and their descriptions are below,
 ### Categorical Variables
 1.	Region: 4 different regions in the US
+   
    ![alt_text](https://github.com/rakesh09111996/College-and-mobility/blob/8adf8837e3971332a4a0ade4e418354ada04332e/regions.jpg)
   	West, mid West, North East and South
 3.	Tier of the Colleges
@@ -42,9 +43,11 @@ The data was sourced from Opportunity Insights contributed by the paper, “Inco
 ![alt_text](https://github.com/rakesh09111996/College-and-mobility/blob/8adf8837e3971332a4a0ade4e418354ada04332e/mosaic_plot.png)
 <p align="center">Fig 1 – Mosaic Plot of Region Name and College Tier</p>
 From the graph above, we can observe a higher correlation between Region Name and the College Tier. The size of each box segment explains the relative quantity of a specific tier of college in each region. From Fig 1, we can see that the region does affect the distribution among different tiers of colleges. For instance, Ivy Plus colleges in the Northeast region dominate the distribution and have a positive association between them. Whereas regions like the South and Midwest do not show much variation in the data.
-![alt_text](https://github.com/rakesh09111996/College-and-mobility/blob/8adf8837e3971332a4a0ade4e418354ada04332e/ECDF_1.png)
+
+![alt_text](https://github.com/rakesh09111996/College-and-mobility/blob/cd1734a60820b5f3c5ac658ad44a0cde9a8d3812/ECDF_1.png)
 <p align="center">Fig 2 – ECDF plot of the region of colleges over the different cohort</p>
 To observe if the cohort affects the region distribution, we plotted an ECDF (Empirical Cumulative Distribution Function). ECDF helps us to visualize the distribution of the parameters in a non-parametric way. On our x-axis, we have cohort whereas on the y-axis we have density distribution. From our graph above, we can observe that for all regions, the density is approximately the same and does not change much throughout the years. Hence, we do not observe a significant relationship between the region of the colleges and the cohort.
+
 ![alt_text](https://github.com/rakesh09111996/College-and-mobility/blob/8adf8837e3971332a4a0ade4e418354ada04332e/ECDF_2.png)
 <p align="center">Fig 3 – ECDF of Tier of colleges over the different cohort</p>
 To observe if the cohort affects the Tier, we again used the ECDF plot. With cohort on the x-axis and density distribution on the y-axis, we can observe that the distribution is not consistent over the years. Different Tier of colleges shows different distribution in their density over various cohort. For example, the Ivy Plus Tier distribution is completely different from the distribution of other non-selective colleges from 1980-1991. This clearly shows that there is an underlying relationship between cohort and tier of colleges.
