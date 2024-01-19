@@ -14,7 +14,8 @@ The data was sourced from Opportunity Insights contributed by the paper, “Inco
    
    ![alt_text](https://github.com/rakesh09111996/College-and-mobility/blob/8adf8837e3971332a4a0ade4e418354ada04332e/regions.jpg)
   	West, mid West, North East and South
-3.	Tier of the Colleges
+   
+2.	Tier of the Colleges
     1 = Ivy Plus 
     2 = Other elite schools (public and private) 
     3 = Highly selective public
@@ -29,7 +30,8 @@ The data was sourced from Opportunity Insights contributed by the paper, “Inco
     12 = Less than two-year schools of any type
     13 = Attending college with insufficient data 
     14 = Not in college between the years of 19-22
-5.	Cohort: 1980-91
+  	
+3.	Cohort: 1980-91
    The children in the 1980-91 period would be now at the peak of their earning ability, so the cohort of 1980-91 would give the best picture to analyze intergenerational social mobility with respect to college education as they would be usually at their highest level of earning capacity.
 ### Numerical variables
 1.	Fraction of parents in a specific income quintile (1-5)
